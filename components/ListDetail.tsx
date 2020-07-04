@@ -1,16 +1,20 @@
-import * as React from 'react'
+import { FC } from 'react'
 
-import { User } from '../interfaces'
+import { Blog } from 'typeDefs'
 
 type ListDetailProps = {
-  item: User
+  blog: Blog
 }
 
-const ListDetail = ({ item: user }: ListDetailProps) => (
-  <div>
-    <h1>Detail for {user.name}</h1>
-    <p>ID: {user.id}</p>
-  </div>
-)
+const ListDetail: FC<ListDetailProps> = ({ blog }) => {
+  return (
+    <div>
+      <h1>Detail for {blog.title}</h1>
+      <p>ID: {blog.id}</p>
+      <p>{blog.body}</p>
+      <p>{blog?.date}</p>
+    </div>
+  )
+}
 
 export default ListDetail
