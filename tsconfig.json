@@ -22,7 +22,6 @@
       "@components/*": ["components/*"],
       "@api/*": ["pages/api/*"],
       "@pages/*": ["pages/*"],
-      "@hooks/*": ["hooks/*"],
       "@store/*": ["store/*"],
       "@typeDefs/*": ["typeDefs/*"],
       "@utils/*": ["utils/*"]

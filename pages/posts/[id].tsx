@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { getBlogById, getBlogErrorsSelector } from '@store/blog/selectors'
-import Layout from '@components/Layout'
+import Layout from '@components/ui/Layout'
 import ListDetail from '@components/ListDetail'
+import { RootState } from '@store/rootReducer'
 
 const Blog = () => {
   const router = useRouter()
-  const blog = useSelector((state: any) => getBlogById(state, router.query.id))
-  const blogErrors = useSelector((state: any) => getBlogErrorsSelector(state))
+  const blog = useSelector((state: RootState) => getBlogById(state, router.query.id))
+  const blogErrors = useSelector((state: RootState) => getBlogErrorsSelector(state))
 
   if (blogErrors) {
     return (

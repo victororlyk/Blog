@@ -1,7 +1,10 @@
 import axios from 'axios'
 
-const instance = axios.create({
+export default axios.create({
   baseURL: 'https://simple-blog-api.crew.red/posts',
+  headers: {
+    post: {
+      'content-type': 'application/json',
+    },
+  },
 })
-
-export default instance
