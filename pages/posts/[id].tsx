@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { getBlogById, getBlogErrorsSelector } from '@store/blog/selectors'
-import Layout from '@components/Layout'
+import Layout from '@components/ui/Layout'
 import ListDetail from '@components/ListDetail'
 import { RootState } from '@store/rootReducer'
 

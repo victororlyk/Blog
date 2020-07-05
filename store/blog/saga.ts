@@ -14,7 +14,7 @@ export function* getBlogs() {
 export function* createBlog(body: any) {
   console.log(body, 'here')
   try {
-    const response = yield call(() =>
+    yield call(() =>
       axios('https://simple-blog-api.crew.red/posts', {
         method: 'post',
         data: body.payload,
@@ -23,8 +23,8 @@ export function* createBlog(body: any) {
         },
       })
     )
-    yield put(createBlogSuccess(response))
+    yield put(createBlogSuccess('blog was created'))
   } catch (e) {
-    yield put(createBlogFailure(e))
+    yield put(createBlogFailure('some error occured while creating blog'))
   }
 }

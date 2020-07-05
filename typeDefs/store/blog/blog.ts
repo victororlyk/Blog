@@ -1,4 +1,4 @@
-import { AxiosResponse, AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 import {
   CREATE_POST,
   CREATE_POST_FAILURE,
@@ -6,6 +6,7 @@ import {
   GET_BLOGS,
   GET_BLOGS_FAILURE,
   GET_BLOGS_SUCCESS,
+  CLEAR_CREATE_TOAST_TEXT,
 } from '@store/blog/actionTypes'
 
 import { BlogType } from '@typeDefs/index'
@@ -32,12 +33,15 @@ export interface createBlogAction {
 
 export interface createBlogFailureAction {
   type: typeof CREATE_POST_FAILURE
-  payload: AxiosError
+  payload: string
 }
 
 export interface createBlogSuccessAction {
   type: typeof CREATE_POST_SUCCESS
-  payload: AxiosResponse
+  payload: string
+}
+export interface clearBlogCreateToastAction {
+  type: typeof CLEAR_CREATE_TOAST_TEXT
 }
 
 export type BlogActionTypes =
@@ -47,9 +51,12 @@ export type BlogActionTypes =
   | createBlogAction
   | createBlogSuccessAction
   | createBlogFailureAction
+  | clearBlogCreateToastAction
 
 // reducer
 export type BlogReducerTypes = {
   blogs: BlogType[]
   error: null | any
+  loading: boolean
+  createBlog: string
 }

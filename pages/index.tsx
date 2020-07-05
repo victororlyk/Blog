@@ -1,9 +1,21 @@
 import { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
 import { getBlogs } from '@store/blog/actions'
 import { getBlogsSelector } from '@store/blog/selectors'
-import Layout from '@components/Layout'
+import Layout from '@components/ui/Layout'
 import List from '@components/List'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Title = styled.h1`
+  font-size: 3rem;
+  margin: 1rem;
+`
 
 const HomePage: FC = () => {
   const dispatch = useDispatch()
@@ -15,8 +27,10 @@ const HomePage: FC = () => {
 
   return (
     <Layout title="Latest posts">
-      <h1>Latest blog posts</h1>
-      <List blogs={blogs} />
+      <Container>
+        <Title>Latest blog posts</Title>
+        <List blogs={blogs} />
+      </Container>
     </Layout>
   )
 }

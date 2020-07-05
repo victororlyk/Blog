@@ -1,6 +1,11 @@
+import React from 'react'
+
 export type BlogType = {
-  id: number
+  id: string
   title: string
-  date?: string
   body: string
 }
+
+export type InputEvent =
+  | React.ChangeEvent<HTMLInputElement>
+  | React.ChangeEvent<HTMLTextAreaElement>
