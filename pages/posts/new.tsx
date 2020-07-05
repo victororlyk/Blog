@@ -1,8 +1,9 @@
 import React, { useEffect, FC, useReducer } from 'react'
+import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { createBlog, clearBlogCreateToast } from '@store/blog/actions'
-import { getCrateBlogText } from '@store/blog/selectors'
+import { getCrateBlogText, getLoading, getBlogsSelector } from '@store/blog/selectors'
 import Layout from '@components/ui/Layout'
 import Toast from '@components/ui/Toast'
 import { InputEvent } from '@typeDefs/index'
@@ -52,7 +53,7 @@ const TextArea = styled.textarea`
   border-radius: 4px;
   outline: none;
   font: inherit;
-  padding: 5px;
+  padding: 20px;
   &:hover {
     border: 2px solid #4c4c4c;
   }
@@ -116,6 +117,9 @@ const NewPost: FC = () => {
   const [{ title, body }, dispatch] = useReducer(reducer, initialArgs)
   const dispatchRedux = useDispatch()
   const toastText = useSelector(getCrateBlogText)
+  const isLoading = useSelector(getLoading)
+  const blogs = useSelector(getBlogsSelector)
+  const router = useRouter()
 
   useEffect(() => {
     if (toastText) {
@@ -123,7 +127,10 @@ const NewPost: FC = () => {
         dispatchRedux(clearBlogCreateToast())
       }, 2000)
     }
-  }, [toastText])
+    if (isLoading && !toastText && !blogs.length) {
+      router.push('/')
+    }
+  }, [toastText, isLoading])
 
   const handleSubmit = () => {
     dispatch({ type: 'title', payload: '' })

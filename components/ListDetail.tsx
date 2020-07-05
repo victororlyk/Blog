@@ -25,7 +25,7 @@ const ListDetail: FC<ListDetailProps> = ({ blog }) => {
   return (
     <Container>
       <Title>Detail for {blog.title}</Title>
-      <p>{blog.body}</p>
+      <p>{blog?.body}</p>
     </Container>
   )
 }

@@ -1,14 +1,16 @@
 import find from 'lodash/fp/find'
-import mapValues from 'lodash/fp/mapValues'
+import conforms from 'lodash/fp/conforms'
+import filter from 'lodash/fp/filter'
+import map from 'lodash/fp/map'
 import { RootState } from '../rootReducer'
 
-export const getBlogsSelector = (state: RootState) => state.BlogReducer.blogs
+export const getBlogsSelector = (state: RootState) =>
+  filter(conforms({ title: (title: any) => !!title }), state.BlogReducer.blogs)
 
 export const getBlogById = (state: RootState, id: any) => {
-  const correctBlogs = mapValues((blog) => {
-    const newBlog = { ...blog }
-    newBlog.id = newBlog.id.toString()
-    return newBlog
+  const correctBlogs = map((blog) => {
+    blog.id = blog.id.toString()
+    return blog
   }, state.BlogReducer.blogs)
   return find(['id', id], correctBlogs)
 }

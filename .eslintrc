@@ -49,7 +49,8 @@
     ],
     "prettier/prettier": "error",
     "jsx-a11y/anchor-is-valid": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "no-param-reassign": 0
   },
   "settings": {
     "import/resolver": {

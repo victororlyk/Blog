@@ -9,11 +9,14 @@ const Card = styled.a`
   h2 {
     font-size: 2.2rem;
     margin: 1rem;
+    white-space: normal;
+    word-break: break-all;
   }
   p {
     color: #738a94;
     text-overflow: ellipsis;
     overflow: hidden;
+    padding: 1rem;
   }
 `
 
@@ -22,10 +25,10 @@ type Props = {
 }
 
 const ListItem: FC<Props> = ({ data }) => (
-  <Link href="/posts/[id]" as={`/posts/${data.id}`}>
+  <Link href="/posts/[id]" as={`/posts/${data?.id}`}>
     <Card>
       <h2>{data.title}</h2>
-      <p>{data.body}</p>
+      <p>{data?.body}</p>
     </Card>
   </Link>
 )
