@@ -1,12 +1,12 @@
-import React from 'react'
+import { FC } from 'react'
 import Link from 'next/link'
-import { Blog } from 'typeDefs'
+import { BlogType } from '@typeDefs/index'
 
 type Props = {
-  data: Blog
+  data: BlogType
 }
 
-const ListItem = ({ data }: Props) => (
+const ListItem: FC<Props> = ({ data }) => (
   <Link href="/posts/[id]" as={`/posts/${data.id}`}>
     <a>
       {data.id}: {data.title}

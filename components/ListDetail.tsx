@@ -1,9 +1,8 @@
 import { FC } from 'react'
-
-import { Blog } from 'typeDefs'
+import { BlogType } from '@typeDefs/index'
 
 type ListDetailProps = {
-  blog: Blog
+  blog: BlogType
 }
 
 const ListDetail: FC<ListDetailProps> = ({ blog }) => {

@@ -1,12 +1,12 @@
-import * as React from 'react'
+import { FC } from 'react'
+import { BlogType } from '@typeDefs/index'
 import ListItem from './ListItem'
-import { Blog } from 'typeDefs'
 
 type Props = {
-  blogs: Blog[]
+  blogs: BlogType[]
 }
 
-const List = ({ blogs }: Props) => (
+const List: FC<Props> = ({ blogs }) => (
   <ul>
     {blogs.map((blog) => (
       <li key={blog.id}>

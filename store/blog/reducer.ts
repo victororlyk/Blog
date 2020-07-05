@@ -1,11 +1,13 @@
 import { GET_BLOGS_SUCCESS, GET_BLOGS_FAILURE } from '@store/blog/actionTypes'
+import { BlogActionTypes, BlogReducerTypes } from '@typeDefs/store/blog/blog'
 
-const initialState = {
+
+const initialState: BlogReducerTypes = {
   blogs: [],
   error: null,
 }
 
-export default (state = initialState, action: any) => {
+export default (state = initialState, action: BlogActionTypes): BlogReducerTypes => {
   switch (action.type) {
     case GET_BLOGS_SUCCESS:
       return {

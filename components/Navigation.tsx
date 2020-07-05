@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 
-const Navigation: FC<any> = () => {
+const Navigation: FC = () => {
   return (
     <header>
       <nav>
